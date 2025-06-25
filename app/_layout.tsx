@@ -13,6 +13,7 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/components/useColorScheme";
 import { createTamagui, TamaguiProvider } from "tamagui";
 import { defaultConfig } from "@tamagui/config/v4"; // for quick config install this
+import Colors from "@/constants/Colors";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -57,7 +58,14 @@ function RootLayoutNav() {
   return (
     <TamaguiProvider config={createTamagui(defaultConfig)}>
       <ThemeProvider value={colorScheme === "light" ? DarkTheme : DefaultTheme}>
-        <Stack>
+        <Stack
+          screenOptions={{
+            headerStyle: { backgroundColor: Colors.background.secondary },
+            headerTintColor: Colors.text.primary,
+            headerTitleStyle: { fontWeight: "bold" },
+            headerTitleAlign: "center",
+          }}
+        >
           <Stack.Screen
             name="authentication"
             options={{ headerShown: false }}

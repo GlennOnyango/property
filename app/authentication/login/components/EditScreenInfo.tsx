@@ -14,16 +14,14 @@ import {
 } from "tamagui"; // or '@tamagui/card'
 
 import Colors from "@/constants/Colors";
-import { View } from "@/components/Themed";
 
 export default function LoginCard() {
   return (
-    
     <Card style={styles.cardStyle}>
       <Card.Header />
       <Card.Footer />
       <YStack gap="$2" alignItems="center">
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Access Your Account</Text>
         {/* <View
           style={styles.separator}
           lightColor="#eee"
@@ -51,13 +49,20 @@ export default function LoginCard() {
             <Label htmlFor="password">Password</Label>
             <Input
               keyboardType="visible-password"
-              placeholder="please enter your password"
+              placeholder="Please enter your password"
               style={styles.input}
             />
           </YStack>
           <XStack justifyContent="center" alignItems="center">
             <Form.Trigger asChild>
-              <Button style={{ maxWidth: "50%", minWidth: "50%" }}>
+              <Button
+                style={{
+                  maxWidth: "50%",
+                  minWidth: "50%",
+                  backgroundColor: Colors.button.primary,
+                  color: Colors.text.secondary,
+                }}
+              >
                 Submit
               </Button>
             </Form.Trigger>
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
   cardStyle: {
     padding: 20,
     minWidth: "90%",
-    backgroundColor: Colors.light.card,
+    backgroundColor: Colors.card.background,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: Colors.light.tint,
+    color: Colors.text.primary,
     textAlign: "center",
     marginBottom: 10,
   },
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 10,
     borderWidth: 1,
-    borderColor: Colors.light.tint,
+    borderColor: Colors.card.border,
     borderRadius: 5,
     width: "100%",
   },

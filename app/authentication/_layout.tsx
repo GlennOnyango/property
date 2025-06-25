@@ -1,3 +1,4 @@
+import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
 import "react-native-reanimated";
 
@@ -7,14 +8,30 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerStyle: { backgroundColor: Colors.background.secondary },
+        headerTintColor: Colors.text.primary,
+        headerTitleStyle: { fontWeight: "bold" },
+        headerTitleAlign: "center",
+      }}
+    >
       <Stack.Screen
-        name="login"
-        options={{ headerShown: true}}
+        name="login/index"
+        options={{ headerShown: true, title: "Login" }}
       />
-      <Stack.Screen name="registration" options={{ headerShown: false }} />
-      <Stack.Screen name="forgot-password" options={{ headerShown: false }} />
-      <Stack.Screen name="reset-password" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="registration/index"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="forgot-password/index"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="reset-password/index"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 }
