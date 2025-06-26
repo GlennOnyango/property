@@ -75,6 +75,11 @@ export default function LoginCard() {
                 backgroundColor: Colors.button.primary,
                 color: Colors.text.secondary,
               }}
+              onPress={() => {
+                // Handle sign up action
+                console.log("Sign Up Pressed");
+                router.push("/authentication/registration");
+              }}
             >
               Sign Up
             </Button>
