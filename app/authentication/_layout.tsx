@@ -22,15 +22,15 @@ function RootLayoutNav() {
       />
       <Stack.Screen
         name="registration/index"
-        options={{ headerShown: false }}
+        options={{ headerShown: true, title: "Registration" }}
       />
       <Stack.Screen
         name="forgot-password/index"
-        options={{ headerShown: false }}
+        options={{ headerShown: true, title: "Forgot Password" }}
       />
       <Stack.Screen
         name="reset-password/index"
-        options={{ headerShown: false }}
+        options={{ headerShown: true, title: "Reset Password" }}
       />
     </Stack>
   );

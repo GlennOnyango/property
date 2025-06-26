@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
 
 import {
   Button,
@@ -16,6 +17,7 @@ import {
 import Colors from "@/constants/Colors";
 
 export default function LoginCard() {
+  const router = useRouter();
   return (
     <Card style={styles.cardStyle}>
       <Card.Header />
@@ -36,7 +38,7 @@ export default function LoginCard() {
         </Text>
 
         <Form style={{ width: "100%" }}>
-          <YStack gap="$2" marginBottom="$2">
+          <YStack gap="$1" marginBottom="$2">
             <Label htmlFor="name">ID/Phone number</Label>
             <Input
               keyboardType="phone-pad"
@@ -45,7 +47,7 @@ export default function LoginCard() {
             />
           </YStack>
 
-          <YStack gap="$2" marginBottom="$2">
+          <YStack gap="$1" marginBottom="$2">
             <Label htmlFor="password">Password</Label>
             <Input
               keyboardType="visible-password"
@@ -53,7 +55,7 @@ export default function LoginCard() {
               style={styles.input}
             />
           </YStack>
-          <XStack justifyContent="center" alignItems="center">
+          <XStack justifyContent="center" alignItems="center" gap={"$2"}>
             <Form.Trigger asChild>
               <Button
                 style={{
@@ -63,10 +65,38 @@ export default function LoginCard() {
                   color: Colors.text.secondary,
                 }}
               >
-                Submit
+                Sign In
               </Button>
             </Form.Trigger>
+            <Button
+              style={{
+                maxWidth: "50%",
+                minWidth: "50%",
+                backgroundColor: Colors.button.primary,
+                color: Colors.text.secondary,
+              }}
+            >
+              Sign Up
+            </Button>
           </XStack>
+
+          <YStack
+            justifyContent="center"
+            alignItems="center"
+            style={{ marginVertical: 20 }}
+          >
+            <Text
+              style={{ color: Colors.text.primary }}
+              textDecorationLine="underline"
+              onPress={() => {
+                // Handle forgot password action
+                console.log("Forgot Password Pressed");
+                router.push("/authentication/forgot-password");
+              }}
+            >
+              Forgot Password?
+            </Text>
+          </YStack>
         </Form>
       </YStack>
       <Card.Background />

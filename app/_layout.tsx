@@ -14,6 +14,7 @@ import { useColorScheme } from "@/components/useColorScheme";
 import { createTamagui, TamaguiProvider } from "tamagui";
 import { defaultConfig } from "@tamagui/config/v4"; // for quick config install this
 import Colors from "@/constants/Colors";
+import { StatusBar } from "expo-status-bar";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -22,7 +23,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
+  initialRouteName: "authentication",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -56,24 +57,29 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <TamaguiProvider config={createTamagui(defaultConfig)}>
-      <ThemeProvider value={colorScheme === "light" ? DarkTheme : DefaultTheme}>
-        <Stack
-          screenOptions={{
-            headerStyle: { backgroundColor: Colors.background.secondary },
-            headerTintColor: Colors.text.primary,
-            headerTitleStyle: { fontWeight: "bold" },
-            headerTitleAlign: "center",
-          }}
+    <>
+      <StatusBar style="dark" backgroundColor={Colors.background.secondary} />
+      <TamaguiProvider config={createTamagui(defaultConfig)}>
+        <ThemeProvider
+          value={colorScheme === "light" ? DarkTheme : DefaultTheme}
         >
-          <Stack.Screen
-            name="authentication"
-            options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-        </Stack>
-      </ThemeProvider>
-    </TamaguiProvider>
+          <Stack
+            screenOptions={{
+              headerStyle: { backgroundColor: Colors.background.secondary },
+              headerTintColor: Colors.text.primary,
+              headerTitleStyle: { fontWeight: "bold" },
+              headerTitleAlign: "center",
+            }}
+          >
+            <Stack.Screen
+              name="authentication"
+              options={{ headerShown: false }}
+            />
+            {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
+            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          </Stack>
+        </ThemeProvider>
+      </TamaguiProvider>
+    </>
   );
 }

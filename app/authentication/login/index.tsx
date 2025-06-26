@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import { View } from "@/components/Themed";
-import LoginCard from "./components/EditScreenInfo";
+import LoginCard from "./components/LoginCard";
 import FormSetUp from "@/components/FormSetUp";
 import Colors from "@/constants/Colors";
 
