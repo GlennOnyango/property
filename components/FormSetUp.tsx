@@ -1,3 +1,4 @@
+import Colors from "@/constants/Colors";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -14,9 +15,9 @@ export default function FormSetUp({ children }: Props) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1 }}
+      style={{ flex: 1, backgroundColor: Colors.background.primary }}
     >
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView style={{ flex: 1, backgroundColor: Colors.background.primary }} contentContainerStyle={{ flexGrow: 1 }}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           {children}
         </TouchableWithoutFeedback>
