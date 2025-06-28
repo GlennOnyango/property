@@ -17,7 +17,7 @@ import {
 
 import Colors from "@/constants/Colors";
 
-export default function RegistrationCard() {
+export default function ForgotPasswordCard() {
   const router = useRouter();
   return (
     <Card style={styles.cardStyle}>
@@ -26,15 +26,15 @@ export default function RegistrationCard() {
 
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <YStack gap="$2" alignItems="center" justifyContent="flex-start">
-          <Text style={styles.title}>Create Your Account</Text>
+          <Text style={styles.title}>Confirm Your Email</Text>
 
           <Separator alignSelf="stretch" style={styles.separator} />
 
           <Text style={styles.descriptionText}>
-            Please fill in the details below to create your account.
+            Please enter your email address to receive a password reset code.
             <Text style={{ color: Colors.text.primary }}>
               {" "}
-              Already have an account?{" "}
+              Remembered your password?{" "}
             </Text>
             <Text
               style={{
@@ -49,41 +49,14 @@ export default function RegistrationCard() {
 
           <Form style={{ width: "100%", paddingHorizontal: 10 }}>
             <YStack gap="$1" marginBottom="$2">
-              <Label htmlFor="name">Full name</Label>
+              <Label htmlFor="name">Email Address</Label>
               <Input
-                keyboardType="default"
-                placeholder="Please enter your full name"
+                keyboardType="email-address"
+                placeholder="Please enter your email address"
                 style={styles.input}
               />
             </YStack>
 
-            <YStack gap="$1" marginBottom="$2">
-              <Label htmlFor="name">Phone Number</Label>
-              <Input
-                keyboardType="default"
-                placeholder="Please enter your Phone number"
-                style={styles.input}
-              />
-            </YStack>
-
-            <YStack gap="$1" marginBottom="$2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                keyboardType="visible-password"
-                placeholder="Please enter your password"
-                style={styles.input} 
-                
-              />
-            </YStack>
-
-            <YStack gap="$1" marginBottom="$2">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
-              <Input
-                keyboardType="visible-password"
-                placeholder="Please confirm password"
-                style={styles.input}
-              />
-            </YStack>
             <XStack justifyContent="center" alignItems="center" gap={"$2"}>
               <Form.Trigger asChild>
                 <Button
@@ -93,8 +66,14 @@ export default function RegistrationCard() {
                     backgroundColor: Colors.button.primary,
                     color: Colors.text.secondary,
                   }}
+                  onPress={() => {
+                    // Handle send reset code action
+                    console.log("Send Reset Code Pressed");
+                    // Here you would typically call an API to send the reset code
+                    router.push("/authentication/reset-password");
+                  }}
                 >
-                  Sign Up
+                  Send Reset Code
                 </Button>
               </Form.Trigger>
             </XStack>

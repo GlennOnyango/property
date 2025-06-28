@@ -34,7 +34,20 @@ export default function LoginCard() {
 
         <Text style={styles.descriptionText}>
           Welcome to the Login Screen! Please enter your credentials to
-          continue.
+          continue.{" "}
+          <Text style={{ color: Colors.text.primary }}>
+            {" "}
+            I don't have an account!{" "}
+          </Text>
+          <Text
+            style={{
+              color: Colors.text.primary,
+              textDecorationLine: "underline",
+            }}
+            onPress={() => router.push("/authentication/registration")}
+          >
+            Sign Up
+          </Text>
         </Text>
 
         <Form style={{ width: "100%" }}>
@@ -68,21 +81,6 @@ export default function LoginCard() {
                 Sign In
               </Button>
             </Form.Trigger>
-            <Button
-              style={{
-                maxWidth: "50%",
-                minWidth: "50%",
-                backgroundColor: Colors.button.primary,
-                color: Colors.text.secondary,
-              }}
-              onPress={() => {
-                // Handle sign up action
-                console.log("Sign Up Pressed");
-                router.push("/authentication/registration");
-              }}
-            >
-              Sign Up
-            </Button>
           </XStack>
 
           <YStack
