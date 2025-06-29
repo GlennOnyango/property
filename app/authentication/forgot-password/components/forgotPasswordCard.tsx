@@ -7,12 +7,10 @@ import {
   Card,
   Form,
   Input,
-  Label,
-  ScrollView,
-  Separator,
+  Label, Separator,
   Text,
   XStack,
-  YStack,
+  YStack
 } from "tamagui"; // or '@tamagui/card'
 
 import Colors from "@/constants/Colors";
@@ -24,80 +22,62 @@ export default function ForgotPasswordCard() {
       <Card.Header />
       <Card.Footer />
 
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <YStack gap="$2" alignItems="center" justifyContent="flex-start">
-          <Text style={styles.title}>Confirm Your Email</Text>
+      {/* <ScrollView contentContainerStyle={{ flexGrow: 1 }}> */}
+      <YStack gap="$2" alignItems="center" justifyContent="flex-start">
+        <Text style={styles.title}>Confirm Your Email</Text>
 
-          <Separator alignSelf="stretch" style={styles.separator} />
+        <Separator alignSelf="stretch" style={styles.separator} />
 
-          <Text style={styles.descriptionText}>
-            Please enter your email address to receive a password reset code.
-            <Text style={{ color: Colors.text.primary }}>
-              {" "}
-              Remembered your password?{" "}
-            </Text>
-            <Text
-              style={{
-                color: Colors.text.primary,
-                textDecorationLine: "underline",
-              }}
-              onPress={() => router.push("/authentication/login")}
-            >
-              Sign In
-            </Text>
+        <Text style={styles.descriptionText}>
+          Please enter your email address to receive a password reset code.
+          <Text style={{ color: Colors.text.primary }}>
+            {" "}
+            Remembered your password?{" "}
           </Text>
+          <Text
+            style={{
+              color: Colors.text.primary,
+              textDecorationLine: "underline",
+            }}
+            onPress={() => router.push("/authentication/login")}
+          >
+            Sign In
+          </Text>
+        </Text>
 
-          <Form style={{ width: "100%", paddingHorizontal: 10 }}>
-            <YStack gap="$1" marginBottom="$2">
-              <Label htmlFor="name">Email Address</Label>
-              <Input
-                keyboardType="email-address"
-                placeholder="Please enter your email address"
-                style={styles.input}
-              />
-            </YStack>
+        <Form style={{ width: "100%", paddingHorizontal: 10 }}>
+          <YStack gap="$1" marginBottom="$2">
+            <Label htmlFor="name">Email Address</Label>
+            <Input
+              keyboardType="email-address"
+              placeholder="Please enter your email address"
+              style={styles.input}
+            />
+          </YStack>
 
-            <XStack justifyContent="center" alignItems="center" gap={"$2"}>
-              <Form.Trigger asChild>
-                <Button
-                  style={{
-                    maxWidth: "50%",
-                    minWidth: "50%",
-                    backgroundColor: Colors.button.primary,
-                    color: Colors.text.secondary,
-                  }}
-                  onPress={() => {
-                    // Handle send reset code action
-                    console.log("Send Reset Code Pressed");
-                    // Here you would typically call an API to send the reset code
-                    router.push("/authentication/reset-password");
-                  }}
-                >
-                  Send Reset Code
-                </Button>
-              </Form.Trigger>
-            </XStack>
-
-            <YStack
-              justifyContent="center"
-              alignItems="center"
-              style={{ marginVertical: 20 }}
-            >
-              <Text
-                style={{ color: Colors.text.primary }}
-                textDecorationLine="underline"
+          <XStack justifyContent="center" alignItems="center" gap={"$2"}>
+            <Form.Trigger asChild>
+              <Button
+                style={{
+                  maxWidth: "50%",
+                  minWidth: "50%",
+                  backgroundColor: Colors.button.primary,
+                  color: Colors.text.secondary,
+                }}
                 onPress={() => {
-                  // Handle forgot password action
-                  console.log("Forgot Password Pressed");
-                  router.push("/authentication/forgot-password");
+                  // Handle send reset code action
+                  console.log("Send Reset Code Pressed");
+                  // Here you would typically call an API to send the reset code
+                  router.push("/authentication/reset-password");
                 }}
               >
-                Forgot Password?
-              </Text>
-            </YStack>
-          </Form>
-        </YStack>
-      </ScrollView>
+                Send Reset Code
+              </Button>
+            </Form.Trigger>
+          </XStack>
+        </Form>
+      </YStack>
+      {/* </ScrollView> */}
       <Card.Background />
     </Card>
   );
@@ -117,7 +97,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    maxHeight: "80%",
   },
   separator: {
     marginVertical: 10,
