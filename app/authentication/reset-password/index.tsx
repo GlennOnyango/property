@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 import { OTPInput } from "@/components/otp";
-import { Card } from "tamagui";
+import { Button, Card } from "tamagui";
 import Colors from "@/constants/Colors";
 
 export default function TabOneScreen() {
@@ -16,7 +16,24 @@ export default function TabOneScreen() {
           </Text>
         </Card.Header>
         <OTPInput />
-        <Card.Footer></Card.Footer>
+        <Card.Footer
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            paddingVertical: 20,
+          }}
+        >
+          <Button
+            style={{
+              maxWidth: "50%",
+              minWidth: "50%",
+              backgroundColor: Colors.button.primary,
+              color: Colors.text.secondary,
+            }}
+          >
+            Submit
+          </Button>
+        </Card.Footer>
       </Card>
     </View>
   );
