@@ -77,6 +77,11 @@ export default function LoginCard() {
                   backgroundColor: Colors.button.primary,
                   color: Colors.text.secondary,
                 }}
+                onPress={() => {
+                  // Handle sign-in action
+                  console.log("Sign In Pressed");
+                  router.push("/(tabs)"); // Redirect to dashboard or home page
+                }}
               >
                 Sign In
               </Button>
