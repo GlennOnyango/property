@@ -5,8 +5,7 @@ import { Pressable } from "react-native";
 
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
-import { useClientOnlyValue } from "@/components/useClientOnlyValue";
-import { Bell, Building2, Home, UserCog } from "lucide-react-native";
+import { Bell, Building2, Home, LogOut, UserCog } from "lucide-react-native";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -25,7 +24,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors.text.primary,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: false,
       }}
     >
       <Tabs.Screen
@@ -33,16 +32,16 @@ export default function TabLayout() {
         options={{
           title: "Aptly",
           tabBarIcon: ({ color }) => <Home size={28} color={color} />,
+          headerShown: true, // Show header for this tab
           headerStyle: {
             backgroundColor: Colors.background.secondary,
           },
 
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/logout" asChild>
               <Pressable>
                 {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
+                  <LogOut
                     size={25}
                     color={Colors.text.primary}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
@@ -58,7 +57,23 @@ export default function TabLayout() {
         options={{
           title: "Apartments",
           tabBarIcon: ({ color }) => <Building2 size={28} color={color} />,
-          headerShown: false, // Hide header for this tab
+          headerShown: true, // Hide header for this tab
+          headerStyle: {
+            backgroundColor: Colors.background.secondary,
+          },
+          headerRight: () => (
+            <Link href="/logout" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <LogOut
+                    size={25}
+                    color={Colors.text.primary}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
         }}
       />
       <Tabs.Screen

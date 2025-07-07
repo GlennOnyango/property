@@ -9,17 +9,17 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash-icon.png",
+      "image": "./assets/images/aptly-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F4F7FD"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/aptly-icon.png",
+        "backgroundColor": "#F4F7FD"
       },
       "edgeToEdgeEnabled": true
     },
@@ -29,7 +29,16 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/aptly-icon.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#F4F7FD"
+        }
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

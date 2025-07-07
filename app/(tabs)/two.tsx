@@ -1,31 +1,57 @@
-import { StyleSheet } from 'react-native';
+import Colors from "@/constants/Colors";
+import * as React from "react";
+import { Text, View, useWindowDimensions } from "react-native";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+const FirstRoute = () => (
+  <View style={{ flex: 1, backgroundColor: "#ff4081" }}>
+    <Text>Tab 1</Text>
+  </View>
+);
 
-export default function TabTwoScreen() {
+const SecondRoute = () => (
+  <View style={{ flex: 1, backgroundColor: "#673ab7" }}>
+    <Text>Tab 2</Text>
+  </View>
+);
+
+const VaccantRoute = () => (
+  <View style={{ flex: 1, backgroundColor: "#673ab7" }}>
+    <Text>Tab 2</Text>
+  </View>
+);
+
+const renderScene = SceneMap({
+  first: FirstRoute,
+  second: SecondRoute,
+  vaccants: VaccantRoute,
+});
+
+const routes = [
+  { key: "first", title: "My Apartments" },
+  { key: "second", title: "Invitations" },
+  { key: "vaccants", title: "Vaccants" },
+];
+
+export default function TabViewExample() {
+  const layout = useWindowDimensions();
+  const [index, setIndex] = React.useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
-    </View>
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+      renderTabBar={(props) => (
+        <TabBar
+          {...props}
+          indicatorStyle={{ backgroundColor: "#4F46E5" }}
+          style={{ backgroundColor: Colors.background.primary }}
+          inactiveColor="#9CA3AF"
+          activeColor="#4F46E5"
+        />
+      )}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
